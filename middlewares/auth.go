@@ -31,7 +31,8 @@ func (m *AuthMiddleware) AuthMiddleware(next server.ToolHandlerFunc) server.Tool
 	return func(ctx context.Context, req mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		// fetch sessionId from context
 		// this gets populated for every tool call
-		sessionId := server.ClientSessionFromContext(ctx).SessionID()
+		// sessionId := server.ClientSessionFromContext(ctx).SessionID()
+		sessionId := "new-session-id"
 		phoneNumber, ok := m.sessionStore[sessionId]
 		if !ok {
 			loginUrl := m.getLoginUrl(sessionId)
